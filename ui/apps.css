@@ -1,3 +1,5 @@
-body{font-family:'Arial'; font-size:small;}
-.thumbnail{border:none; cursor:pointer;}
-.thumbnail .caption{background:#455A64; color:#fff;}
+body{font-family: 'Open Sans', sans-serif; font-size:small; background:#999 url(../bg/01.jpg) no-repeat top center;}
+h1, h2{text-transform:uppercase; color:#fff; margin-bottom:40px; font-weight:normal;}
+.thumbnail{border:none; cursor:pointer; background:#fff; padding:0 10px 10px 0; border-radius:0;}
+.thumbnail .caption{color:#666; font-size:x-large; padding-bottom:25px;}
+.thumbnail img{margin-right:0;}
