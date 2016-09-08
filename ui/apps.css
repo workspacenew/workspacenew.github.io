@@ -1,0 +1,3 @@
+body{font-family:'Arial'; font-size:small;}
+.thumbnail{border:none; cursor:pointer;}
+.thumbnail .caption{background:#455A64; color:#fff;}
