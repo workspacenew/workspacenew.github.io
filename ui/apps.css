@@ -1,4 +1,5 @@
-body{font-family: 'Open Sans', sans-serif; font-size:small; background:#fff url(../bg/01.jpg) no-repeat top center;}
+body{font-family: 'Open Sans', sans-serif; font-size:small; background:#fff no-repeat top center;}
+.appbg{background-image:url(../bg/01.jpg);}
 h1, h2{text-transform:uppercase; color:#fafafa; margin-bottom:40px; font-weight:normal;}
 .thumbnail{border:none; cursor:pointer; background:#fff; padding:0 10px 10px 0; border-radius:0;}
 .thumbnail .caption{color:#666; font-size:x-large; padding-bottom:25px;}
