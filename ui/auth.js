@@ -4,6 +4,16 @@ function onSignIn(googleUser) {
 	console.log('Name: ' + profile.getName());
 	console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail());*/
-	$("#signin").addClass("hidden");
-	$("#apps").removeClass("hidden");
+}
+
+function appLoad(t){
+	if(t){
+		$("#signin").addClass("hidden");
+		$("#apps").removeClass("hidden");
+		$("body").addClass("appbg");
+	}else{
+		$("#signin").removeClass("hidden");
+		$("#apps").addClass("hidden");
+		$("body").removeClass("appbg");
+	}
 }
