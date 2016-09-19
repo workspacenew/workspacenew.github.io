@@ -1,17 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-signin-client_id" content="831753983739-90m0kk87rls4nrtlddp9quqj9phv9r3d.apps.googleusercontent.com">
-<title>WorkSpace</title>
-<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<link href="ui/apps.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-signin-client_id" content="831753983739-90m0kk87rls4nrtlddp9quqj9phv9r3d.apps.googleusercontent.com">
+	
+	<title>WorkSpace</title>
+	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+	
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="js/modernizr.js"></script>
+	
 </head>
 <body>
 <div id="signin">
@@ -20,31 +23,71 @@
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 </center>
 </div>
-<div id="apps" class="hidden">
-    <div class="row pg-empty-placeholder"></div>
-    <div class="container" style="padding:60px 0;">
-		<!--
-		<h2>SYSTEM</h2>
-		<div class="row">
-            <div class="col-sm-6 col-md-3">			
-                <div class="thumbnail">
-					<div class="caption">Settings</div>
-                    <img src="apps/settings/icon.png" alt="">
-                    
-                </div>
-            </div>
-			<div class="col-sm-6 col-md-3">			
-                <div class="thumbnail">
-					<div class="caption">Users</div>
-                    <img src="apps/users/icon.png" alt="">
-                    
-                </div>
-            </div>
-		</div>
-		-->
-    </div>
+<div id="loader" class="hidden">
+	<center><svg class="spinner" width="33px" height="33px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg><h3>working</h3></center>
 </div>
+<div id="wsapps" class="hidden">
+	<header class="cd-main-header">
+		<a href="javascript:void(0)" class="cd-logo"><img src="brand/logo.png" alt="logo"></a>
+		
+		<div class="cd-search is-hidden">
+			<form action="" method="post" onsubmit="return false;">
+				<input type="search" id="search" placeholder="Search...">
+			</form>
+		</div> <!-- cd-search -->
 
-<script src="ui/auth.js"></script>
+		<a href="javascript:void(0)" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+				<li><a href="javascript:void(0)" id="timer">...</a></li>
+				<li class="has-children account">
+					<a href="javascript:void(0)"><img src="img/cd-avatar.png" alt="avatar">Subhasom</a>
+					<ul>
+						<li><a href="javascript:void(0)">My Account</a></li>
+						<li><a href="javascript:void(0)">Edit Account</a></li>
+						<li><a href="javascript:void(0)">Sign out</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">&nbsp;</li>
+				<li class="action-btn"><a href="javascript:void(0)">+ Add New</a></li>
+			</ul>
+			
+			<ul>
+				<li><a href="javascript:void(0)" id="sys-notification">Notifications <!--<span class="count">0</span>--></a></li>
+			</ul>
+			
+			<ul id="sys-applications">
+				<li class="cd-label">Applications</li>
+				<li><a href="javascript:void(0)">Activity</a></li>
+				<li><a href="javascript:void(0)">Users</a></li>				
+				<li><a href="javascript:void(0)">Task</a></li>
+			</ul>
+
+			<ul id="sys-tools">
+				<li class="cd-label">Tools</li>
+				<li class="has-children"><a href="javascript:void(0)">Email</a></li>
+				<li class="has-children"><a href="javascript:void(0)">Calender</a></li>
+				<li class="has-children"><a href="javascript:void(0)">Drive</a></li>
+			</ul>			
+		</nav>
+		
+		<div class="content-wrapper">
+			<h2>Activity Stream</h2>
+			<p><small>Problem in fetching data from server...</small></p>
+		</div>
+	</main> <!-- .cd-main-content -->
+</div>
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ws.js"></script>
 </body>
 </html>
