@@ -26,7 +26,7 @@ function onSignIn(googleUser) {
 	console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail());*/
 	setProgress(80);
-	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec/?type=auth&email='+profile.getEmail()).done(function(result){
+	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
 			$("#signin").addClass("hidden"); $("#wsapps").removeClass("hidden");
 		}else{
