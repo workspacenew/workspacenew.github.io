@@ -32,17 +32,17 @@ function onSignIn(googleUser){
 	console.log('Name: ' + profile.getName());
 	console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail());*/
-	setProgress(80);
+	lset('googleProfile', '{"Email":"'+profile.getEmail()+'","Name":"'+profile.getName()+'","ID":"'+profile.getId()+'"}');
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
 			lset('appProfile', j2t(result));
 			onMenuLoad();
 			switchToApp(true);
 		}else{
-			msg('Sorry! Unable to process your request.'); setProgress(100);
+			$(".g-signin2").html('Sorry! service not yet available for you.<br /><a href="javascript:void(0)" onclick="reportAppIssue(1)">Report this issue</a>');
 		}
 	}).fail(function(result){
-		msg('Error: Connection problem'); setProgress(100);
+		$(".g-signin2").html('Connection problem, try again later!');
 	});
 }
 
@@ -65,4 +65,18 @@ function onMenuLoad(){
 function openApp(e){
 	var appName = e.id.split("n-")[1];
 	log(appName);
+}
+
+function reportAppIssue(i){
+	$(".g-signin2").html('Sending data...');
+	$.getJSON('https://script.google.com/macros/s/AKfycbyUmYiwmC_lUwW3LxukXdTNE8p_srsGqFXw-CKwPl9l3KD8XgVH/exec?type=reportissue&data='+lget('googleProfile')).done(function(result){
+		if(result){
+			$(".g-signin2").html('Sending data...');
+		}else{
+			$(".g-signin2").html('Sorry! Unable to process your request.');
+		}
+	}).fail(function(result){
+		$(".g-signin2").html('Connection problem, try again later!');
+	});
+	console.log(i+' for: '+lget('googleProfile'));
 }
