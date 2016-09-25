@@ -36,7 +36,7 @@ function onSignIn(googleUser){
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
 			lset('userProfile', j2t(result));
-			onInterfaceLoad();
+			onMenuLoad();
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
