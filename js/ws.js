@@ -35,7 +35,9 @@ function onSignIn(googleUser){
 	setProgress(80);
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
-			lset('appProfile', j2t(result)); onMenuLoad();
+			lset('appProfile', j2t(result));
+			onMenuLoad();
+			switchToApp(true);
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
@@ -47,11 +49,20 @@ function onSignIn(googleUser){
 function onMenuLoad(){
 	$.getJSON('https://script.google.com/macros/s/AKfycbwsBdoCvKzSMAhQeSYicMlEb_UC4fRKW31OXlAtVQ7g67orKqk8/exec?type=main&r='+t2j(lget('appProfile')).Role).done(function(result){
 		if(result){
-			lset('appMenu', j2t(result)); switchToApp(true);
+			lset('appMenu', j2t(result));
+			
+			$.each(result, function(k, d){
+				$("#sys-applications").append('<li><a id="nav-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
+			});
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
 	}).fail(function(result){
 		msg('Error: Connection problem'); setProgress(100);
 	});	
+}
+
+function openApp(e){
+	var appName = e.id.split("nav-")[1];
+	log(appName);
 }
