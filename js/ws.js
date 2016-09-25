@@ -78,5 +78,5 @@ function reportAppIssue(i){
 	}).fail(function(result){
 		$(".g-signin2").html('Connection problem, try again later!');
 	});
-	console.log(i+' for: '+lget('googleProfile'));
+	$(".g-signin2").html('Issue reported, we will get back to you soon.');
 }
