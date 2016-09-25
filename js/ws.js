@@ -31,7 +31,9 @@ function onSignIn(googleUser) {
 	setProgress(80);
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
-			$("#signin").addClass("hidden"); $("#wsapps").removeClass("hidden");
+			lset('authUser', j2t(result));
+			$("#signin").addClass("hidden");
+			$("#wsapps").removeClass("hidden");
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
