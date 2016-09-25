@@ -71,12 +71,11 @@ function reportAppIssue(i){
 	$(".g-signin2").html('Sending data...');
 	$.getJSON('https://script.google.com/macros/s/AKfycbyUmYiwmC_lUwW3LxukXdTNE8p_srsGqFXw-CKwPl9l3KD8XgVH/exec?type=reportissue&data={"Issue":"'+i+'","googleProfile":'+lget('googleProfile')+'}').done(function(result){
 		if(result){
-			$(".g-signin2").html('<p>Sending data...</p>');
+			$(".g-signin2").html('<p>Issue reported, we will get back to you soon.</p>');
 		}else{
 			$(".g-signin2").html('<p>Sorry! Unable to process your request.</p>');
 		}
 	}).fail(function(result){
 		$(".g-signin2").html('<p>Connection problem, try again later!</p>');
-	});
-	$(".g-signin2").html('<p>Issue reported, we will get back to you soon.</p>');
+	});	
 }
