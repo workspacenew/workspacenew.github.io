@@ -52,7 +52,7 @@ function onMenuLoad(){
 			lset('appMenu', j2t(result));
 			
 			$.each(result, function(k, d){
-				$("#sys-applications").append('<li><a id="nav-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
+				$("#s-app").append('<li><a id="n-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
 			});
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
@@ -63,6 +63,6 @@ function onMenuLoad(){
 }
 
 function openApp(e){
-	var appName = e.id.split("nav-")[1];
+	var appName = e.id.split("n-")[1];
 	log(appName);
 }
