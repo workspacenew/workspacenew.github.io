@@ -1,3 +1,6 @@
+var appId = 'workspace_app7_';
+var appDate = new Date( new Date().getTime() + +5.5 * 3600 * 1000).toUTCString()+'+0530 (India Standard Time)';
+
 startTime();
 
 function startTime() {
@@ -40,7 +43,10 @@ function onSignIn(googleUser) {
 function setProgress(v){
 	
 }
+function preventDefaults(e){if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82) e.preventDefault();};
+function lget(e){return window.sessionStorage.getItem(appId+e);}
+function lset(e, v){return window.sessionStorage.setItem(appId+e, v);}
 function msg(t){alert(t);console.log(t);}
 function log(t){console.log(t);}
-function url(t, u){document.title = wsAppTitle+' '+t; history.pushState({}, t, u);}
+function url(t, u){document.title = t; history.pushState({}, t, u);}
 function formatDateTime(t){return t.getDate()+'/'+t.getMonth()+'/'+t.getFullYear()+' '+t.getHours()+':'+t.getMinutes();}
