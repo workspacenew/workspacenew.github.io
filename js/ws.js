@@ -50,3 +50,5 @@ function msg(t){alert(t);console.log(t);}
 function log(t){console.log(t);}
 function url(t, u){document.title = t; history.pushState({}, t, u);}
 function formatDateTime(t){return t.getDate()+'/'+t.getMonth()+'/'+t.getFullYear()+' '+t.getHours()+':'+t.getMinutes();}
+function t2j(d){try{return JSON.parse(d);}catch(e){msg('Error: Cannot read data'); return false;}}
+function j2t(d){try{return JSON.stringify(d);}catch(e){msg('Error: Cannot write data'); return false;}}
