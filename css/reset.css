@@ -10,6 +10,8 @@ html, body, div, span, pre, a, ul, li{
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+}
+p{
 	line-height: normal;
 }
 /*html, body, div, span, applet, object, iframe,
