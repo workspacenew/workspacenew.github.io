@@ -69,7 +69,7 @@ function openApp(e){
 
 function reportAppIssue(i){
 	$(".g-signin2").html('Sending data...');
-	$.getJSON('https://script.google.com/macros/s/AKfycbyUmYiwmC_lUwW3LxukXdTNE8p_srsGqFXw-CKwPl9l3KD8XgVH/exec?type=reportissue&data='+lget('googleProfile')).done(function(result){
+	$.getJSON('https://script.google.com/macros/s/AKfycbyUmYiwmC_lUwW3LxukXdTNE8p_srsGqFXw-CKwPl9l3KD8XgVH/exec?type=reportissue&data={"Issue":"'+i+'","googleProfile":'+lget('googleProfile')+'}').done(function(result){
 		if(result){
 			$(".g-signin2").html('Sending data...');
 		}else{
