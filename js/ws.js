@@ -39,10 +39,10 @@ function onSignIn(googleUser){
 			onMenuLoad();
 			switchToApp(true);
 		}else{
-			$(".g-signin2").html('Sorry! service not yet available for you.<br /><a href="javascript:void(0)" onclick="reportAppIssue(1)">Report this issue</a>');
+			$(".g-signin2").html('<p>Sorry! service not yet available for you.<br /><a href="javascript:void(0)" onclick="reportAppIssue(1)">Report this issue</a></p>');
 		}
 	}).fail(function(result){
-		$(".g-signin2").html('Connection problem, try again later!');
+		$(".g-signin2").html('<p>Connection problem, try again later!</p>');
 	});
 }
 
@@ -71,12 +71,12 @@ function reportAppIssue(i){
 	$(".g-signin2").html('Sending data...');
 	$.getJSON('https://script.google.com/macros/s/AKfycbyUmYiwmC_lUwW3LxukXdTNE8p_srsGqFXw-CKwPl9l3KD8XgVH/exec?type=reportissue&data={"Issue":"'+i+'","googleProfile":'+lget('googleProfile')+'}').done(function(result){
 		if(result){
-			$(".g-signin2").html('Sending data...');
+			$(".g-signin2").html('<p>Sending data...</p>');
 		}else{
-			$(".g-signin2").html('Sorry! Unable to process your request.');
+			$(".g-signin2").html('<p>Sorry! Unable to process your request.</p>');
 		}
 	}).fail(function(result){
-		$(".g-signin2").html('Connection problem, try again later!');
+		$(".g-signin2").html('<p>Connection problem, try again later!</p>');
 	});
-	$(".g-signin2").html('Issue reported, we will get back to you soon.');
+	$(".g-signin2").html('<p>Issue reported, we will get back to you soon.</p>');
 }
