@@ -35,7 +35,7 @@ function onSignIn(googleUser){
 	setProgress(80);
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
-			lset('userProfile', j2t(result)); onMenuLoad();
+			lset('appProfile', j2t(result)); onMenuLoad();
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
@@ -45,9 +45,9 @@ function onSignIn(googleUser){
 }
 
 function onMenuLoad(){
-	$.getJSON('https://script.google.com/macros/s/AKfycbwsBdoCvKzSMAhQeSYicMlEb_UC4fRKW31OXlAtVQ7g67orKqk8/exec?type=main&r='+j2t(lget('userProfile')).Role).done(function(result){
+	$.getJSON('https://script.google.com/macros/s/AKfycbwsBdoCvKzSMAhQeSYicMlEb_UC4fRKW31OXlAtVQ7g67orKqk8/exec?type=main&r='+t2j(lget('appProfile')).Role).done(function(result){
 		if(result){
-			lset('userMenu', j2t(result)); switchToApp(true);
+			lset('appMenu', j2t(result)); switchToApp(true);
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
