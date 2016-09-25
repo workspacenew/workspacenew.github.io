@@ -52,7 +52,7 @@ function onMenuLoad(){
 			lset('appMenu', j2t(result));
 			
 			$.each(result, function(k, d){
-				$("#s-app").append('<li><a id="n-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
+				$("#s-a").append('<li><a id="n-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
 			});
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
