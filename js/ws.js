@@ -72,9 +72,10 @@ function onMenuLoad(){
 	});	
 }
 
-function openApp(e){
-	var appName = e.id.split("n-")[1];
-	log(appName);
+function openApp(a){
+	var appName = a.id.split("n-")[1];
+	if(appName){ setProgress(60); $.getScript("apps/"+appName+"/app.js").done(function(script, textStatus){setProgress(100);});}
+	log('Opening '+appName);
 }
 
 function reportAppIssue(i){
