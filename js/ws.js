@@ -1,6 +1,11 @@
 /*WorkSpace App Core*/
 var appId = 'workspace_app7_';
 var appDate = new Date( new Date().getTime() + +5.5 * 3600 * 1000).toUTCString()+'+0530 (India Standard Time)';
+/*var appLoading=function(){var c,d,e,f,g,h,k={width:"100%",height:"4px",zIndex:9999,top:"0"},l={width:0,height:"100%",clear:"both",transition:"height .3s"};c=function(a,b){for(var c in b)a.style[c]=b[c];a.style["float"]="left"};f=function(){var a=this,b=this.width-this.here;0.1>b&&-0.1<b?(g.call(this,this.here),this.moving=!1,100==this.width&&(this.el.style.height=0,setTimeout(function(){a.cont.el.removeChild(a.el)},300))):(g.call(this,this.width-b/4),setTimeout(function(){a.go()},16))};g=function(a){this.width=
+a;this.el.style.width=this.width+"%"};h=function(){var a=new d(this);this.bars.unshift(a)};d=function(a){this.el=document.createElement("div");this.el.style.backgroundColor=a.opts.bg;this.here=this.width=0;this.moving=!1;this.cont=a;c(this.el,l);a.el.appendChild(this.el)};d.prototype.go=function(a){a?(this.here=a,this.moving||(this.moving=!0,f.call(this))):this.moving&&f.call(this)};e=function(a){a=this.opts=a||{};var b;a.bg=a.bg||"#000";this.bars=[];b=this.el=document.createElement("div");c(this.el,
+k);a.id&&(b.id=a.id);b.style.position=a.target?"relative":"fixed";a.target?a.target.insertBefore(b,a.target.firstChild):document.getElementsByTagName("body")[0].appendChild(b);h.call(this)};e.prototype.go=function(a){this.bars[0].go(a);100==a&&h.call(this)};return e}();
+var appProgress = new appLoading({bg:'#09f'});
+function toNull(e){}*/
 function startTime(){var today = new Date(); var h = today.getHours(); var m = today.getMinutes(); var s = today.getSeconds(); m = checkTime(m); s = checkTime(s); $("#timer").html(h + ":" + m + ""); var t = setTimeout(function(){startTime();}, 1000);}
 function checkTime(i){if(i < 10){i = "0" + i;}return i;}
 function preventDefaults(e){if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82) e.preventDefault();};
@@ -12,9 +17,7 @@ function url(t, u){document.title = t; history.pushState({}, t, u);}
 function formatDateTime(t){return t.getDate()+'/'+t.getMonth()+'/'+t.getFullYear()+' '+t.getHours()+':'+t.getMinutes();}
 function t2j(d){try{return JSON.parse(d);}catch(e){msg('Error: Cannot read data'); return false;}}
 function j2t(d){try{return JSON.stringify(d);}catch(e){msg('Error: Cannot write data'); return false;}}
-function setProgress(v){
-	if(v = 100) $("#loader").addClass("hidden"); else $("#loader").removeClass("hidden");
-}
+function setProgress(p){if(p == 100) $("#loader").addClass("hidden"); else $("#loader").removeClass("hidden"); /*toNull(appProgress.go(p));*/}
 startTime();
 
 /*Interface*/
