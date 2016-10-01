@@ -43,6 +43,7 @@ function onSignIn(googleUser){
 		if(result){
 			lset('appProfile', j2t(result));
 			onMenuLoad();
+			onUserCommonDataLoad();
 			switchToApp(true);
 		}else{
 			$(".g-signin2").html('<p>Sorry! service not yet available for you.<br /><a href="javascript:void(0)" onclick="reportAppIssue(1)">Report this issue</a></p>');
@@ -70,6 +71,10 @@ function onMenuLoad(){
 	}).fail(function(result){
 		msg('Error: Connection problem'); setProgress(100);
 	});	
+}
+
+function onUserCommonDataLoad(){
+	$("#s-p").html(t2j(lget('appProfile')).Name.split(" ")[0]);
 }
 
 function openApp(a){
