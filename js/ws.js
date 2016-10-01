@@ -74,7 +74,7 @@ function onMenuLoad(){
 }
 
 function onUserCommonDataLoad(){
-	$("#s-p").html(t2j(lget('appProfile')).Name.split(" ")[0]);
+	$("#a-p-name").html(t2j(lget('appProfile')).Name.split(" ")[0]);
 }
 
 function openApp(a){
