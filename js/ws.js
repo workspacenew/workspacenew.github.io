@@ -12,7 +12,9 @@ function url(t, u){document.title = t; history.pushState({}, t, u);}
 function formatDateTime(t){return t.getDate()+'/'+t.getMonth()+'/'+t.getFullYear()+' '+t.getHours()+':'+t.getMinutes();}
 function t2j(d){try{return JSON.parse(d);}catch(e){msg('Error: Cannot read data'); return false;}}
 function j2t(d){try{return JSON.stringify(d);}catch(e){msg('Error: Cannot write data'); return false;}}
-function setProgress(v){}
+function setProgress(v){
+	if(v = 100) $("#loader").addClass("hidden"); else $("#loader").removeClass("hidden");
+}
 startTime();
 
 /*Interface*/
@@ -32,6 +34,7 @@ function onSignIn(googleUser){
 	console.log('Name: ' + profile.getName());
 	console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail());*/
+	setProgress(40);
 	lset('googleProfile', '{"Email":"'+profile.getEmail()+'","Name":"'+profile.getName()+'","ID":"'+profile.getId()+'"}');
 	$.getJSON('https://script.google.com/macros/s/AKfycbxZltCYi59joSZn20WE9EACY8hrkx5_PiZxMSs5cBrZTToZ-eV9/exec?type=auth&email='+profile.getEmail()).done(function(result){
 		if(result){
@@ -40,13 +43,16 @@ function onSignIn(googleUser){
 			switchToApp(true);
 		}else{
 			$(".g-signin2").html('<p>Sorry! service not yet available for you.<br /><a href="javascript:void(0)" onclick="reportAppIssue(1)">Report this issue</a></p>');
+			setProgress(100);
 		}
 	}).fail(function(result){
 		$(".g-signin2").html('<p>Connection problem, try again later!</p>');
+		setProgress(100);
 	});
 }
 
 function onMenuLoad(){
+	setProgress(60);
 	$.getJSON('https://script.google.com/macros/s/AKfycbwsBdoCvKzSMAhQeSYicMlEb_UC4fRKW31OXlAtVQ7g67orKqk8/exec?type=main&r='+t2j(lget('appProfile')).Role).done(function(result){
 		if(result){
 			lset('appMenu', j2t(result));
@@ -54,6 +60,7 @@ function onMenuLoad(){
 			$.each(result, function(k, d){
 				$("#s-a").append('<li><a id="n-'+d.ID+'" href="javascript:void(0)" onclick="openApp(this)">'+d.Name+'</a></li>');
 			});
+			setProgress(100);
 		}else{
 			msg('Sorry! Unable to process your request.'); setProgress(100);
 		}
