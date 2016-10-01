@@ -727,7 +727,7 @@ Sidebar
   -webkit-animation: rotator 1.4s linear infinite;
           animation: rotator 1.4s linear infinite;
   display: block;
-  margin-top: 250px;
+  margin-top: 240px;
 }
 
 @-webkit-keyframes rotator {
